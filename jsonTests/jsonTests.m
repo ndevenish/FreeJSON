@@ -171,4 +171,11 @@
   NSString *result = [[[NDJSONParser alloc] initWithString:testData] parse];
   STAssertEqualObjects(@"Test :", result, @"Unicode read");
 }
+
+- (void)testEmptyArrayInObject
+{
+  NSString *testData = @"{\"item\": []}";
+  NSString *result = [[[NDJSONParser alloc] initWithString:testData] parse];
+  STAssertEqualObjects(@{@"item":@[]}, result, @"Empty array read");
+}
 @end

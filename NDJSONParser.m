@@ -170,6 +170,10 @@
 
   // Loop until we close the array
   unichar next = self.scanner.peekNextCharacter;
+  // Swallow this character for an empty array
+  if (next == ']') {
+    next = self.scanner.nextCharacter;
+  }
   while (next != ']') { // && !self.scanner.isAtEnd
     // Read a value
     [array addObject:self.parseValue];
