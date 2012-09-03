@@ -24,7 +24,11 @@
 
 - (void)skipIgnoredCharacters
 {
-  [self scanCharactersFromSet:self.charactersToBeSkipped intoString:nil];
+  NSCharacterSet *store = self.charactersToBeSkipped;
+  self.charactersToBeSkipped = nil;
+  BOOL scanned = [self scanCharactersFromSet:store intoString:nil];
+  self.charactersToBeSkipped = store;
+  NSLog(@"Scanned? %d", scanned);
 }
 
 - (unichar)nextCharacter

@@ -42,7 +42,7 @@
 
 - (void)testNothing
 {
-  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"[\"something\"]"];
+  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"   [\"something\"]"];
   STAssertNil([parser parse], @"No result");
 }
 
