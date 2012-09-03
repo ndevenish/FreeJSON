@@ -19,7 +19,25 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "NDJSONParser.h"
+#import "NSScanner+parsing.h"
 
 @implementation NDJSONParser
+
+- (id)initWithString:(NSString*)data
+{
+  self = [super init];
+  if (!self) return nil;
+  
+  self.data = data;
+  self.scanner = [NSScanner scannerWithString:data];
+  
+  return self;
+}
+
+- (id)parse
+{
+  NSLog(@"First Character: %C", [self.scanner nextCharacter]);
+  return nil;
+}
 
 @end

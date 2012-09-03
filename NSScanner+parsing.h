@@ -20,11 +20,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NDJSONParser : NSObject
-@property (strong, nonatomic) NSString *data;
-@property (strong, nonatomic) NSScanner *scanner;
-
-- (id)initWithString:(NSString*)data;
-- (id)parse;
+@interface NSScanner (parsing)
+- (unichar)nextCharacter;
+- (void)skipIgnoredCharacters;
 
 @end

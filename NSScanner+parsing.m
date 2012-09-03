@@ -18,13 +18,21 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "NSScanner+parsing.h"
 
-@interface NDJSONParser : NSObject
-@property (strong, nonatomic) NSString *data;
-@property (strong, nonatomic) NSScanner *scanner;
+@implementation NSScanner (parsing)
 
-- (id)initWithString:(NSString*)data;
-- (id)parse;
+- (void)skipIgnoredCharacters
+{
+  [self scanCharactersFromSet:self.charactersToBeSkipped intoString:nil];
+}
+
+- (unichar)nextCharacter
+{
+  [self skipIgnoredCharacters];
+  unichar chara = [self.string characterAtIndex:self.scanLocation];
+  self.scanLocation = self.scanLocation + 1;
+  return chara;
+}
 
 @end

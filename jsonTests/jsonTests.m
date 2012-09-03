@@ -40,8 +40,11 @@
     [super tearDown];
 }
 
-- (void)testInit
+- (void)testNothing
 {
-  NDJSONParser *parser = [[NDJSONParser alloc] init];
+  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"[\"something\"]"];
+  STAssertNil([parser parse], @"No result");
 }
+
+
 @end
