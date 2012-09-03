@@ -42,8 +42,15 @@
 
 - (void)testStringValues
 {
+  NSString *nullTest = [[[NDJSONParser alloc] initWithString:@"\"\""] parse];
+  STAssertEqualObjects(@"", nullTest, @"String returned");
+
+  NSString *spaceTest = [[[NDJSONParser alloc] initWithString:@"\"With Space\""] parse];
+  STAssertEqualObjects(@"With Space", spaceTest, @"String returned");
+
   NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"\"something\""];
   STAssertEqualObjects(@"something", [parser parse], @"String returned");
+
   
   parser = [[NDJSONParser alloc] initWithString:@"\"somet\\\"hing\""];
   STAssertEqualObjects(@"somet\"hing", [parser parse], @"String returned");
@@ -94,8 +101,6 @@
   STAssertEquals(result.count, 4U, @"Array size");
   STAssertEqualObjects(result[3], @"something", @"Expected result");
   STAssertEqualObjects(result[2], @YES, @"Expected...");
-  
-  
 }
 
 
