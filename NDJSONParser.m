@@ -83,6 +83,13 @@
   return ret;
 }
 
+- (NSString*)parseStringWithLeading
+{
+  unichar next = self.scanner.nextCharacter;
+  if (!next == '"') return nil;
+  return self.parseString;
+}
+
 - (NSString*)parseString
 {
   NSMutableString *string = [NSMutableString string];
@@ -92,7 +99,9 @@
   while (YES) {
     NSString *scanned;
     [self.scanner scanUpToCharactersFromSet:set intoString:&scanned];
-    [string appendString:scanned];
+    if (scanned) {
+      [string appendString:scanned]; 
+    }
     // We have found either the end, or a divider
     unichar next = [self.scanner nextCharacter];
 
@@ -102,7 +111,7 @@
     } else if (next == '\\') {
       [string appendString:[self parseStringEscape]];
     } else {
-      NSAssert(NO, @"Unknown position in string parsing");
+      return nil;
     }
   }
   return string;
@@ -127,12 +136,26 @@
 
 - (NSDictionary*)readKeyValuePair
 {
-  return [NSDictionary dictionary];
+  NSString *key = [self parseStringWithLeading];
+  unichar divider = [self.scanner nextCharacter];
+  NSAssert(divider == ':', @"Invalid dictionary divider");
+  id value = [self parseValue];
+  NSAssert(value, @"Invalid value!");
+  
+  return @{key : value};
 }
 
 - (NSDictionary*)parseObject
 {
   NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+  unichar next = self.scanner.peekNextCharacter;
+  while (next != '}') {
+    // Read a value pair
+    [dict addEntriesFromDictionary:[self readKeyValuePair]];
+    // If we don't have a comma or }, fail
+    next = self.scanner.nextCharacter;
+    NSAssert(next == ',' || next == '}', @"Invalid next character");
+  }
   return dict;
 }
 
