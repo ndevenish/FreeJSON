@@ -20,6 +20,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface json : NSObject
+@interface NDJSONParser : NSObject
 
 @end

@@ -18,15 +18,19 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "jsonTests.h"
+#import "NDJSONParser.h"
+
+#import <SenTestingKit/SenTestingKit.h>
+
+@interface jsonTests : SenTestCase
+
+@end
 
 @implementation jsonTests
 
 - (void)setUp
 {
-    [super setUp];
-    
-    // Set-up code here.
+  [super setUp];
 }
 
 - (void)tearDown
@@ -36,9 +40,8 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testInit
 {
-    STFail(@"Unit tests are not implemented yet in jsonTests");
+  NDJSONParser *parser = [[NDJSONParser alloc] init];
 }
-
 @end

@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0A5209AD15F4E78100490DB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5209AC15F4E78100490DB1 /* Foundation.framework */; };
-		0A5209B215F4E78100490DB1 /* json.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5209B115F4E78100490DB1 /* json.h */; };
-		0A5209B415F4E78100490DB1 /* json.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5209B315F4E78100490DB1 /* json.m */; };
 		0A5209BC15F4E78100490DB1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5209BB15F4E78100490DB1 /* SenTestingKit.framework */; };
 		0A5209BE15F4E78100490DB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5209BD15F4E78100490DB1 /* UIKit.framework */; };
 		0A5209BF15F4E78100490DB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5209AC15F4E78100490DB1 /* Foundation.framework */; };
 		0A5209C215F4E78100490DB1 /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5209A915F4E78100490DB1 /* libjson.a */; };
 		0A5209C815F4E78100490DB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A5209C615F4E78100490DB1 /* InfoPlist.strings */; };
 		0A5209CB15F4E78200490DB1 /* jsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5209CA15F4E78200490DB1 /* jsonTests.m */; };
+		0A5209D615F4E7F900490DB1 /* NDJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5209D515F4E7F900490DB1 /* NDJSONParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +34,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				0A5209B215F4E78100490DB1 /* json.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,15 +43,14 @@
 		0A5209A915F4E78100490DB1 /* libjson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjson.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5209AC15F4E78100490DB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A5209B015F4E78100490DB1 /* json-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "json-Prefix.pch"; sourceTree = "<group>"; };
-		0A5209B115F4E78100490DB1 /* json.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		0A5209B315F4E78100490DB1 /* json.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = json.m; sourceTree = "<group>"; };
 		0A5209BA15F4E78100490DB1 /* jsonTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jsonTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5209BB15F4E78100490DB1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0A5209BD15F4E78100490DB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		0A5209C515F4E78100490DB1 /* jsonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jsonTests-Info.plist"; sourceTree = "<group>"; };
 		0A5209C715F4E78100490DB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0A5209C915F4E78200490DB1 /* jsonTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jsonTests.h; sourceTree = "<group>"; };
 		0A5209CA15F4E78200490DB1 /* jsonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jsonTests.m; sourceTree = "<group>"; };
+		0A5209D415F4E7F900490DB1 /* NDJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDJSONParser.h; sourceTree = "<group>"; };
+		0A5209D515F4E7F900490DB1 /* NDJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDJSONParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +79,8 @@
 		0A52099E15F4E78100490DB1 = {
 			isa = PBXGroup;
 			children = (
+				0A5209D415F4E7F900490DB1 /* NDJSONParser.h */,
+				0A5209D515F4E7F900490DB1 /* NDJSONParser.m */,
 				0A5209AE15F4E78100490DB1 /* json */,
 				0A5209C315F4E78100490DB1 /* jsonTests */,
 				0A5209AB15F4E78100490DB1 /* Frameworks */,
@@ -111,8 +110,6 @@
 		0A5209AE15F4E78100490DB1 /* json */ = {
 			isa = PBXGroup;
 			children = (
-				0A5209B115F4E78100490DB1 /* json.h */,
-				0A5209B315F4E78100490DB1 /* json.m */,
 				0A5209AF15F4E78100490DB1 /* Supporting Files */,
 			);
 			path = json;
@@ -129,7 +126,6 @@
 		0A5209C315F4E78100490DB1 /* jsonTests */ = {
 			isa = PBXGroup;
 			children = (
-				0A5209C915F4E78200490DB1 /* jsonTests.h */,
 				0A5209CA15F4E78200490DB1 /* jsonTests.m */,
 				0A5209C415F4E78100490DB1 /* Supporting Files */,
 			);
@@ -243,7 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A5209B415F4E78100490DB1 /* json.m in Sources */,
+				0A5209D615F4E7F900490DB1 /* NDJSONParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +293,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -315,7 +311,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
