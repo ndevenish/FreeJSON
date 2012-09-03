@@ -165,4 +165,10 @@
   STAssertEqualObjects(example, array, @"RFC Test equivalence");
 }
 
+- (void)testUnicode
+{
+  NSString *testData = @"\"Test \\u003a\"";
+  NSString *result = [[[NDJSONParser alloc] initWithString:testData] parse];
+  STAssertEqualObjects(@"Test :", result, @"Unicode read");
+}
 @end

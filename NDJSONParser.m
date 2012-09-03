@@ -26,6 +26,7 @@
 - (unichar)nextCharacter;
 - (void)skipIgnoredCharacters;
 - (unichar)peekNextCharacter;
+- (NSString*)scanNumberOfCharacters:(NSUInteger)length;
 @end
 
 @implementation NSScanner (ndParsing)
@@ -51,6 +52,13 @@
 {
   [self skipIgnoredCharacters];
   return [self.string characterAtIndex:self.scanLocation];
+}
+
+- (NSString*)scanNumberOfCharacters:(NSUInteger)length
+{
+  NSRange substr = NSMakeRange(self.scanLocation, length);
+  self.scanLocation = self.scanLocation + length;
+  return [self.string substringWithRange:substr];
 }
 @end
 
@@ -109,7 +117,13 @@
   } else if (next == 't') {
     ret =  @"\t";
   } else if (next == 'u') {
-    NSAssert(0, @"Unicode escape not yet supported");
+    NSString *hexString = [self.scanner scanNumberOfCharacters:4];
+    NSScanner *hexScanner = [NSScanner scannerWithString:hexString];
+    NSUInteger codePoint;
+    BOOL success = [hexScanner scanHexInt:&codePoint];
+    NSAssert(success, @"Failed to convert hex code");
+    unichar code = codePoint;
+    return [NSString stringWithCharacters:&code length:1];
   } else {
     NSAssert(0, @"Unrecognised unicode escape");
   }
