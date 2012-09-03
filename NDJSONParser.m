@@ -28,7 +28,6 @@
   self = [super init];
   if (!self) return nil;
   
-  self.data = data;
   self.scanner = [NSScanner scannerWithString:data];
   
   return self;
