@@ -34,6 +34,27 @@
   return self;
 }
 
+- (NSNumber*)parseNumberFromString:(NSString*)string
+{
+  NSScanner *scanner = [NSScanner scannerWithString:string];
+  
+  NSInteger intValue;
+  [scanner scanInteger:&intValue];
+  if (scanner.isAtEnd) {
+    return [NSNumber numberWithInteger:intValue];
+  }
+  
+  double dubValue;
+  scanner.scanLocation = 0;
+  [scanner scanDouble:&dubValue];
+  if (scanner.isAtEnd) {
+    return [NSNumber numberWithDouble:dubValue];
+  }
+  
+  NSAssert(NO, @"Could not parse value");
+  return nil;
+}
+
 - (NSString*)parseStringEscape
 {
   NSString *ret;
@@ -118,7 +139,7 @@
     [separators addCharactersInString:@","];
     NSString *contents;
     [self.scanner scanUpToCharactersFromSet:separators intoString:&contents];
-    contents = [NSString stringWithFormat:@"%C%@", firstChar, contents];
+    contents = [NSString stringWithFormat:@"%C%@", firstChar, contents ? contents : @""];
     // Is this value any of the standard tokens?
     if ([contents isEqualToString:@"true"]) {
       return [NSNumber numberWithBool:YES];
@@ -128,6 +149,10 @@
       return [NSNull null];
     }
     // We MUST have a number left, otherwise error
+    // Try to parse a number
+    NSNumber *number = [self parseNumberFromString:contents];
+    NSAssert(number, @"Number parsed correctly");
+    return number;
   }
   return nil;
 }

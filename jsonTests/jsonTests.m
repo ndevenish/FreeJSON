@@ -69,4 +69,23 @@
   parser = [[NDJSONParser alloc] initWithString:@"null"];
   STAssertEqualObjects([NSNull null], [parser parse], @"Correct keyword");
 }
+
+- (void)testNumber
+{
+  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"1"];
+  STAssertEqualObjects([NSNumber numberWithInt:1], parser.parse, @"Number parsing");
+  
+  parser = [[NDJSONParser alloc] initWithString:@"1.1"];
+  STAssertEqualObjects([NSNumber numberWithDouble:1.1], parser.parse, @"Number parsing");
+  
+  parser = [[NDJSONParser alloc] initWithString:@".1"];
+  STAssertEqualObjects([NSNumber numberWithDouble:0.1], parser.parse, @"Number parsing");
+  
+  parser = [[NDJSONParser alloc] initWithString:@"-443"];
+  STAssertEqualObjects([NSNumber numberWithInt:-443], parser.parse, @"Number parsing");
+  
+  parser = [[NDJSONParser alloc] initWithString:@"2e3"];
+  STAssertEqualObjects([NSNumber numberWithDouble:2e3], parser.parse, @"Number parsing");
+
+}
 @end
