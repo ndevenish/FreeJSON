@@ -110,7 +110,19 @@
 
 - (NSArray*)parseArray
 {
-  return [NSArray array];
+  NSMutableArray *array = [NSMutableArray array];
+
+  // Loop until we close the array
+  unichar next = self.scanner.peekNextCharacter;
+  while (next != ']') { // && !self.scanner.isAtEnd
+    // Read a value
+    [array addObject:self.parseValue];
+
+    // If we don't have a comma or ], fail
+    next = self.scanner.nextCharacter;
+    NSAssert(next == ',' || next == ']', @"Invalid next character");
+  }
+  return array;
 }
 
 - (NSDictionary*)readKeyValuePair
@@ -136,7 +148,7 @@
   } else {
     // Parse a value... number, true, false, null
     NSMutableCharacterSet *separators = [[NSCharacterSet whitespaceAndNewlineCharacterSet] mutableCopy];
-    [separators addCharactersInString:@","];
+    [separators addCharactersInString:@",]}"];
     NSString *contents;
     [self.scanner scanUpToCharactersFromSet:separators intoString:&contents];
     contents = [NSString stringWithFormat:@"%C%@", firstChar, contents ? contents : @""];

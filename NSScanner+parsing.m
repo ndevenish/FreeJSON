@@ -26,14 +26,15 @@
 {
   NSCharacterSet *store = self.charactersToBeSkipped;
   self.charactersToBeSkipped = nil;
-  BOOL scanned = [self scanCharactersFromSet:store intoString:nil];
+  [self scanCharactersFromSet:store intoString:nil];
   self.charactersToBeSkipped = store;
-  NSLog(@"Scanned? %d", scanned);
 }
 
 - (unichar)nextCharacter
 {
   [self skipIgnoredCharacters];
+  if (self.isAtEnd) return 0;
+  
   unichar chara = [self.string characterAtIndex:self.scanLocation];
   self.scanLocation = self.scanLocation + 1;
   return chara;

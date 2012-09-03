@@ -50,16 +50,6 @@
   
 }
 
-- (void)testObject
-{
-  
-}
-
-- (void)testArray
-{
-  
-}
-
 - (void)testKeyword
 {
   NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"true"];
@@ -88,4 +78,31 @@
   STAssertEqualObjects([NSNumber numberWithDouble:2e3], parser.parse, @"Number parsing");
 
 }
+
+- (void)testArray
+{
+  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"[]"];
+  STAssertEqualObjects([NSArray array], [parser parse], @"Null array");
+  
+  parser = [[NDJSONParser alloc] initWithString:@"[1]"];
+  STAssertEqualObjects([NSArray arrayWithObject:[NSNumber numberWithInteger:1]], [parser parse], @"Null array");
+  
+  NSArray *result = [[[NDJSONParser alloc] initWithString:@"[1,2]"] parse];
+  STAssertEquals(result.count, 2U, @"Array size");
+
+  result = [[[NDJSONParser alloc] initWithString:@"[1,2, true, \"something\"]"] parse];
+  STAssertEquals(result.count, 4U, @"Array size");
+  STAssertEqualObjects(result[3], @"something", @"Expected result");
+  STAssertEqualObjects(result[2], @YES, @"Expected...");
+  
+  
+}
+
+
+
+- (void)testObject
+{
+  
+}
+
 @end
