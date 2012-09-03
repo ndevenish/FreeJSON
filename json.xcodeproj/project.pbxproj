@@ -42,7 +42,6 @@
 /* Begin PBXFileReference section */
 		0A5209A915F4E78100490DB1 /* libjson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjson.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5209AC15F4E78100490DB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		0A5209B015F4E78100490DB1 /* json-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "json-Prefix.pch"; sourceTree = "<group>"; };
 		0A5209BA15F4E78100490DB1 /* jsonTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jsonTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5209BB15F4E78100490DB1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0A5209BD15F4E78100490DB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -81,7 +80,6 @@
 			children = (
 				0A5209D415F4E7F900490DB1 /* NDJSONParser.h */,
 				0A5209D515F4E7F900490DB1 /* NDJSONParser.m */,
-				0A5209AE15F4E78100490DB1 /* json */,
 				0A5209C315F4E78100490DB1 /* jsonTests */,
 				0A5209AB15F4E78100490DB1 /* Frameworks */,
 				0A5209AA15F4E78100490DB1 /* Products */,
@@ -105,22 +103,6 @@
 				0A5209BD15F4E78100490DB1 /* UIKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0A5209AE15F4E78100490DB1 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				0A5209AF15F4E78100490DB1 /* Supporting Files */,
-			);
-			path = json;
-			sourceTree = "<group>";
-		};
-		0A5209AF15F4E78100490DB1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0A5209B015F4E78100490DB1 /* json-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		0A5209C315F4E78100490DB1 /* jsonTests */ = {
@@ -321,8 +303,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/json.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "json/json-Prefix.pch";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -336,8 +316,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/json.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "json/json-Prefix.pch";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -354,8 +332,6 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "json/json-Prefix.pch";
 				INFOPLIST_FILE = "jsonTests/jsonTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -370,8 +346,6 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "json/json-Prefix.pch";
 				INFOPLIST_FILE = "jsonTests/jsonTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
