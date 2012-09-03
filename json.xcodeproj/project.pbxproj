@@ -15,7 +15,6 @@
 		0A5209C815F4E78100490DB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A5209C615F4E78100490DB1 /* InfoPlist.strings */; };
 		0A5209CB15F4E78200490DB1 /* jsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5209CA15F4E78200490DB1 /* jsonTests.m */; };
 		0A5209D615F4E7F900490DB1 /* NDJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5209D515F4E7F900490DB1 /* NDJSONParser.m */; };
-		0A5209D915F4EA6300490DB1 /* NSScanner+parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5209D815F4EA6300490DB1 /* NSScanner+parsing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +51,6 @@
 		0A5209CA15F4E78200490DB1 /* jsonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jsonTests.m; sourceTree = "<group>"; };
 		0A5209D415F4E7F900490DB1 /* NDJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDJSONParser.h; sourceTree = "<group>"; };
 		0A5209D515F4E7F900490DB1 /* NDJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDJSONParser.m; sourceTree = "<group>"; };
-		0A5209D715F4EA6300490DB1 /* NSScanner+parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+parsing.h"; sourceTree = "<group>"; };
-		0A5209D815F4EA6300490DB1 /* NSScanner+parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+parsing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +81,6 @@
 			children = (
 				0A5209D415F4E7F900490DB1 /* NDJSONParser.h */,
 				0A5209D515F4E7F900490DB1 /* NDJSONParser.m */,
-				0A5209D715F4EA6300490DB1 /* NSScanner+parsing.h */,
-				0A5209D815F4EA6300490DB1 /* NSScanner+parsing.m */,
 				0A5209AE15F4E78100490DB1 /* json */,
 				0A5209C315F4E78100490DB1 /* jsonTests */,
 				0A5209AB15F4E78100490DB1 /* Frameworks */,
@@ -245,7 +240,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A5209D615F4E7F900490DB1 /* NDJSONParser.m in Sources */,
-				0A5209D915F4EA6300490DB1 /* NSScanner+parsing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +398,7 @@
 				0A5209D015F4E78200490DB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A5209D115F4E78200490DB1 /* Build configuration list for PBXNativeTarget "jsonTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +407,7 @@
 				0A5209D315F4E78200490DB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

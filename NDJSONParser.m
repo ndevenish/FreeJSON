@@ -19,7 +19,41 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "NDJSONParser.h"
-#import "NSScanner+parsing.h"
+
+#pragma mark - NSScanner Category
+
+@interface NSScanner (ndParsing)
+- (unichar)nextCharacter;
+- (void)skipIgnoredCharacters;
+- (unichar)peekNextCharacter;
+@end
+
+@implementation NSScanner (ndParsing)
+- (void)skipIgnoredCharacters
+{
+  NSCharacterSet *store = self.charactersToBeSkipped;
+  self.charactersToBeSkipped = nil;
+  [self scanCharactersFromSet:store intoString:nil];
+  self.charactersToBeSkipped = store;
+}
+
+- (unichar)nextCharacter
+{
+  [self skipIgnoredCharacters];
+  if (self.isAtEnd) return 0;
+  
+  unichar chara = [self.string characterAtIndex:self.scanLocation];
+  self.scanLocation = self.scanLocation + 1;
+  return chara;
+}
+
+- (unichar)peekNextCharacter
+{
+  [self skipIgnoredCharacters];
+  return [self.string characterAtIndex:self.scanLocation];
+}
+@end
+
 
 @implementation NDJSONParser
 
