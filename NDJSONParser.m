@@ -34,6 +34,34 @@
   return self;
 }
 
+- (NSString*)parseStringEscape
+{
+  NSString *ret;
+  unichar next = [self.scanner nextCharacter];
+  if (next == '"') {
+    ret =  @"\"";
+  } else if (next == '\\') {
+    ret =  @"\\";
+  } else if (next == '/') {
+    ret =  @"/";
+  } else if (next == 'b') {
+    ret =  @"\b";
+  } else if (next == 'f') {
+    ret =  @"\f";
+  } else if (next == 'n') {
+    ret =  @"\n";
+  } else if (next == 'r') {
+    ret =  @"\r";
+  } else if (next == 't') {
+    ret =  @"\t";
+  } else if (next == 'u') {
+    NSAssert(0, @"Unicode escape not yet supported");
+  } else {
+    NSAssert(0, @"Unrecognised unicode escape");
+  }
+  return ret;
+}
+
 - (NSString*)parseString
 {
   NSMutableString *string = [NSMutableString string];
@@ -46,12 +74,12 @@
     [string appendString:scanned];
     // We have found either the end, or a divider
     unichar next = [self.scanner nextCharacter];
-//    [string appendFormat:@"%C",next];
+
     if (next == '"') {
       // We are at the end of the string!
       break;
     } else if (next == '\\') {
-      // An escape.. parse this
+      [string appendString:[self parseStringEscape]];
     } else {
       NSAssert(NO, @"Unknown position in string parsing");
     }
