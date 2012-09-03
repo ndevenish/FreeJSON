@@ -34,10 +34,72 @@
   return self;
 }
 
+- (NSString*)parseString
+{
+  NSMutableString *string = [NSMutableString string];
+  // Scan until " or "\"
+  NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"\"\\"];
+
+  while (YES) {
+    NSString *scanned;
+    [self.scanner scanUpToCharactersFromSet:set intoString:&scanned];
+    [string appendString:scanned];
+    // We have found either the end, or a divider
+    unichar next = [self.scanner nextCharacter];
+//    [string appendFormat:@"%C",next];
+    if (next == '"') {
+      // We are at the end of the string!
+      break;
+    } else if (next == '\\') {
+      // An escape.. parse this
+    } else {
+      NSAssert(NO, @"Unknown position in string parsing");
+    }
+  }
+  return string;
+}
+
+- (NSArray*)parseArray
+{
+  return [NSArray array];
+}
+
+- (NSDictionary*)readKeyValuePair
+{
+  return [NSDictionary dictionary];
+}
+
+- (NSDictionary*)parseObject
+{
+  NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+  return dict;
+}
+
+- (id)parseValue
+{
+  unichar firstChar = [self.scanner nextCharacter];
+  if (firstChar == '[') {
+    return [self parseArray];
+  } else if (firstChar == '{') {
+    return [self parseObject];
+  } else if (firstChar == '"') {
+    return [self parseString];
+  } else {
+    // Parse a value... number, true, false, null
+    NSString *contents;
+    NSMutableCharacterSet *separators = [[NSCharacterSet whitespaceAndNewlineCharacterSet] mutableCopy];
+    [self.scanner scanUpToCharactersFromSet:separators intoString:&contents];
+    
+    [separators addCharactersInString:@","];
+  }
+  return nil;
+}
+
 - (id)parse
 {
-  NSLog(@"First Character: %C", [self.scanner nextCharacter]);
-  return nil;
+  return [self parseValue];
+//  NSLog(@"First Character: %C", [self.scanner nextCharacter]);
+//  return nil;
 }
 
 @end

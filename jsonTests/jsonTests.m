@@ -40,10 +40,10 @@
     [super tearDown];
 }
 
-- (void)testNothing
+- (void)testStringValues
 {
-  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"   [\"something\"]"];
-  STAssertNil([parser parse], @"No result");
+  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"\"something\""];
+  STAssertEqualObjects(@"something", [parser parse], @"String returned");
 }
 
 
