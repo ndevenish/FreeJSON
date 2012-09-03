@@ -39,4 +39,9 @@
   return chara;
 }
 
+- (unichar)peekNextCharacter
+{
+  [self skipIgnoredCharacters];
+  return [self.string characterAtIndex:self.scanLocation];
+}
 @end

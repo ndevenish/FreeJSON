@@ -23,5 +23,6 @@
 @interface NSScanner (parsing)
 - (unichar)nextCharacter;
 - (void)skipIgnoredCharacters;
+- (unichar)peekNextCharacter;
 
 @end
