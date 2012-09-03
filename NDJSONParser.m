@@ -114,11 +114,20 @@
     return [self parseString];
   } else {
     // Parse a value... number, true, false, null
-    NSString *contents;
     NSMutableCharacterSet *separators = [[NSCharacterSet whitespaceAndNewlineCharacterSet] mutableCopy];
-    [self.scanner scanUpToCharactersFromSet:separators intoString:&contents];
-    
     [separators addCharactersInString:@","];
+    NSString *contents;
+    [self.scanner scanUpToCharactersFromSet:separators intoString:&contents];
+    contents = [NSString stringWithFormat:@"%C%@", firstChar, contents];
+    // Is this value any of the standard tokens?
+    if ([contents isEqualToString:@"true"]) {
+      return [NSNumber numberWithBool:YES];
+    } else if ([contents isEqualToString:@"false"]) {
+      return [NSNumber numberWithBool:NO];
+    } else if ([contents isEqualToString:@"null"]) {
+      return [NSNull null];
+    }
+    // We MUST have a number left, otherwise error
   }
   return nil;
 }

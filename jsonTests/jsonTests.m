@@ -50,5 +50,23 @@
   
 }
 
+- (void)testObject
+{
+  
+}
 
+- (void)testArray
+{
+  
+}
+
+- (void)testKeyword
+{
+  NDJSONParser *parser = [[NDJSONParser alloc] initWithString:@"true"];
+  STAssertEqualObjects([NSNumber numberWithBool:YES], [parser parse], @"Correct keyword");
+  parser = [[NDJSONParser alloc] initWithString:@"false"];
+  STAssertEqualObjects([NSNumber numberWithBool:NO], [parser parse], @"Correct keyword");
+  parser = [[NDJSONParser alloc] initWithString:@"null"];
+  STAssertEqualObjects([NSNull null], [parser parse], @"Correct keyword");
+}
 @end
