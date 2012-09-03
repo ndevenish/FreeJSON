@@ -102,7 +102,11 @@
 
 - (void)testObject
 {
+  NSDictionary *dict = [[[NDJSONParser alloc] initWithString:@"{}"] parse];
+  STAssertEqualObjects(@{}, dict, @"Dictionary equal");
   
+  dict = [[[NDJSONParser alloc] initWithString:@"{\"key\": 1}"] parse];
+  STAssertEqualObjects(@{@"key": @1}, dict, @"Dictionary equal");
 }
 
 @end
