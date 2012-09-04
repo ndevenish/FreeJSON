@@ -32,10 +32,16 @@
 @implementation NSScanner (ndParsing)
 - (void)skipIgnoredCharacters
 {
-  NSCharacterSet *store = self.charactersToBeSkipped;
-  self.charactersToBeSkipped = nil;
-  [self scanCharactersFromSet:store intoString:nil];
-  self.charactersToBeSkipped = store;
+  NSString *string = self.string;
+  NSInteger scanLoc = self.scanLocation;
+  const NSInteger maxLoc = string.length-1;
+  
+  unichar next = [string characterAtIndex:scanLoc];
+  while ((next == '\n' || next == ' ' || next == '\t') && scanLoc <= maxLoc) {
+    ++scanLoc;
+    next = [string characterAtIndex:scanLoc];
+  }
+  self.scanLocation = scanLoc;
 }
 
 - (unichar)nextCharacter

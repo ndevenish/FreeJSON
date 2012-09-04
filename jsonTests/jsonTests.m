@@ -54,7 +54,10 @@
   
   parser = [[NDJSONParser alloc] initWithString:@"\"somet\\\"hing\""];
   STAssertEqualObjects(@"somet\"hing", [parser parse], @"String returned");
-  
+
+  parser = [[NDJSONParser alloc] initWithString:@"\"test\"  "];
+  STAssertEqualObjects(@"test", [parser parse], @"String returned");
+
 }
 
 - (void)testKeyword
