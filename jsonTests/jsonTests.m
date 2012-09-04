@@ -99,8 +99,8 @@
 
   result = [[[NDJSONParser alloc] initWithString:@"[1,2, true, \"something\"]"] parse];
   STAssertEquals(result.count, 4U, @"Array size");
-  STAssertEqualObjects(result[3], @"something", @"Expected result");
-  STAssertEqualObjects(result[2], @YES, @"Expected...");
+  STAssertEqualObjects([result objectAtIndex:3], @"something", @"Expected result");
+  STAssertEqualObjects([result objectAtIndex:2], [NSNumber numberWithBool:YES], @"Expected...");
 }
 
 
